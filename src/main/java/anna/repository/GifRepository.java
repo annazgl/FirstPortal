@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public class GifRepository {
     private static final List<Gif>ALL_GIFS = Arrays.asList(
-        new Gif("android-explosion","anna", false),
-            new Gif("ben-and-mike",  "anna", true),
-            new Gif("book-dominos", "anna", false),
-            new Gif("compiler-bot", "anna", true),
-            new Gif("cowboy-coder",  "anna", false),
-            new Gif("infinite-andrew", "anna", true)
+        new Gif("android-explosion","anna", false,1),
+            new Gif("ben-and-mike",  "anna", true,1),
+            new Gif("book-dominos", "anna", false,2),
+            new Gif("compiler-bot", "anna", true,3),
+            new Gif("cowboy-coder",  "anna", false,2),
+            new Gif("infinite-andrew", "anna", true,3)
     );
 
 
@@ -27,6 +27,15 @@ public class GifRepository {
                 return gif;
         }
         return null;
+    }
+
+    public List<Gif> findByCategoryId(int categoryId){
+        List<Gif>gifs = new ArrayList<Gif>();
+        for(Gif gif: ALL_GIFS){
+            if(gif.getCategoryId()==categoryId)
+                gifs.add(gif);
+        }
+        return gifs;
     }
 
     public  List<Gif> getAllGifs() {
