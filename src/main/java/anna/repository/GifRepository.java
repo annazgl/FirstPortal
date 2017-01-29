@@ -4,6 +4,7 @@ import anna.model.Gif;
 import org.springframework.stereotype.Repository;
 import sun.net.www.content.image.gif;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public class GifRepository {
             new Gif("infinite-andrew", "anna", true)
     );
 
+
+
     public Gif findByName(String name){
         for(Gif gif: ALL_GIFS){
             if(gif.getName().equals(name))
@@ -28,5 +31,14 @@ public class GifRepository {
 
     public  List<Gif> getAllGifs() {
         return ALL_GIFS;
+    }
+
+    public List<Gif>getFavorites(){
+        List<Gif> favorites = new ArrayList<Gif>();
+        for(Gif gif: ALL_GIFS){
+            if(gif.isFavorite())
+                favorites.add(gif);
+        }
+        return favorites;
     }
 }

@@ -24,10 +24,18 @@ public class GifController {
     }
 
 
+
+
     @GetMapping("/gif")
     public String gifDetails(ModelMap modelMap){
         Gif gif= gifRepository.findByName("android-explosion");
         modelMap.put("gif",gif);
         return "gif-details";
+    }
+
+    @GetMapping("/favorites")
+    public String favorites(ModelMap modelMap){
+        modelMap.addAttribute("gifs",gifRepository.getFavorites());
+        return "favorites";
     }
 }
