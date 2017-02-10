@@ -50,4 +50,5 @@ public class GifRepository {
         }
         return favorites;
     }
+
 }

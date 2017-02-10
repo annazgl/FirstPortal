@@ -6,12 +6,13 @@ import anna.repository.GifRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import sun.net.www.content.image.gif;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static javafx.scene.text.FontPosture.findByName;
 
 @Controller
 public class GifController {
@@ -44,4 +45,11 @@ public class GifController {
         modelMap.put("gif", gifRepository.findByName(name));
         return "gif-details";
     }
+
+    @GetMapping("/search")
+    public String gifSearch(@RequestParam("q") String name, ModelMap modelMap) {
+        modelMap.addAttribute("gifs", gifRepository.findByName(name));
+        return "search";
+    }
+
 }

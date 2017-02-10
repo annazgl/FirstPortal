@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" th:href="@{/app.css}" />
 
-    <title>Categories</title>
+    <title>Favorites</title>
 </head>
 <body>
 <div class="navbar-fixed">
@@ -20,13 +20,13 @@
             <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a th:href="@{/}">Explore</a></li>
-                <li class="active"><a th:href="@{/categories}">Categories</a></li>
-                <li><a th:href="@{/favorites}">Favorites</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li class="active"><a th:href="@{/favorites}">Favorites</a></li>
             </ul>
             <ul id="mobile-nav" class="side-nav">
                 <li><a th:href="@{/}">Explore</a></li>
-                <li class="active"><a th:href="@{/categories}">Categories</a></li>
-                <li><a th:href="@{/favorites}">Favorites</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li class="active"><a th:href="@{/favorites}">Favorites</a></li>
             </ul>
         </div>
     </nav>
@@ -36,25 +36,20 @@
         <div class="col s12">
             <form action="/search" method="get">
                 <div class="input-field">
-                    <input name="q" type="search" placeholder="Search all gifs..." required="required" autocomplete="off"/>
+                    <input name="q" type="search" placeholder="Wyszukiwanie..." required="required" autocomplete="off"/>
                     <i class="material-icons">search</i>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<div class="categories container">
+<div class="gifs container">
     <div class="row">
-      
-        <div th:each="category : ${categories}" class="col s12 l4">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-title">
-                     
-                        <a th:href="@{'/category/' + ${category.id}}" th:text="${category.name}">Category Name</a>
-                    </div>
-                </div>
-            </div>
+        <div th:each="gif : ${gifs}" class="col s12 l4">
+            <a th:href="@{|/gif/${gif.name}|}">
+                <img th:src="@{|/gifs/${gif.name}.gif|}" />
+                <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
+            </a>
         </div>
     </div>
 </div>
