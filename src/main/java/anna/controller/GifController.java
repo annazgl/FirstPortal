@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javafx.scene.text.FontPosture.findByName;
-
 @Controller
 public class GifController {
 
