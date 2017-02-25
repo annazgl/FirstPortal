@@ -2,7 +2,6 @@ package anna.repository;
 
 import anna.model.Gif;
 import org.springframework.stereotype.Repository;
-import sun.net.www.content.image.gif;
 
 import java.util.ArrayList;
 import java.util.Arrays;
